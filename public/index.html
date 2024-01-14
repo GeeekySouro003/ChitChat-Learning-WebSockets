@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChitChat</title>
+</head>
+<body>
+    <h1>Learning to build a Chat App using Socket.io</h1>
+    <input type="text" id="msg" placeholder="Enter your message" />
+    <button id="sendbtn">Send</button>
+
+    <div id="messages"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script >
+        const socket=io();
+        const sendbtn=document.getElementById("sendbtn");
+        const messagesend=document.getElementById("msg");
+        const allmessages=document.getElementById("messages");
+
+        socket.on('message',(message)=>{
+            const p=document.createElement('p');
+            p.innerText=message;
+            allmessages.appendChild(p);
+        })
+
+        sendbtn.addEventListener("click",e =>{
+            const message=messagesend.value;
+            console.log(message);
+            socket.emit("user-message",message);
+        });
+    </script>
+</body>
+</html>
