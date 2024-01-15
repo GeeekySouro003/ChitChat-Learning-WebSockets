@@ -7,32 +7,35 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <div id="chat-container">
-        <h1>ChitChat Messaging App</h1>
-        <input type="text" id="msg" placeholder="Enter your message" />
-        <button id="sendbtn">Send</button>
-
-        <div id="messages"></div>
-    </div>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-        const sendbtn = document.getElementById("sendbtn");
-        const messagesend = document.getElementById("msg");
-        const allmessages = document.getElementById("messages");
-
-        socket.on('message', (message) => {
-            const p = document.createElement('p');
-            p.innerText = message;
-            allmessages.appendChild(p);
-        });
-
-        sendbtn.addEventListener("click", e => {
-            const message = messagesend.value;
-            console.log(message);
-            socket.emit("user-message", message);
-        });
-    </script>
+    <section class="chatbox">
+        <div id="chat-container">
+            <h1>ChitChat Messaging App</h1>
+            <input type="text" id="msg" placeholder="Enter your message" />
+            <button id="sendbtn">Send</button>
+    
+            <div id="messages"></div>
+        </div>
+    
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+            const sendbtn = document.getElementById("sendbtn");
+            const messagesend = document.getElementById("msg");
+            const allmessages = document.getElementById("messages");
+    
+            socket.on('message', (message) => {
+                const p = document.createElement('p');
+                p.innerText = message;
+                allmessages.appendChild(p);
+            });
+    
+            sendbtn.addEventListener("click", e => {
+                const message = messagesend.value;
+                console.log(message);
+                socket.emit("user-message", message);
+            });
+        </script>
+    </section>
+    
 </body>
 </html>

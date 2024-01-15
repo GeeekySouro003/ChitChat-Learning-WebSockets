@@ -1,3 +1,10 @@
+.chatbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+}
+
 #chat-container {
     max-width: 400px;
     margin: auto;
@@ -5,5 +12,4 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
 }
